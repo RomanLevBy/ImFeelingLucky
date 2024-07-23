@@ -142,10 +142,7 @@
         <div>
             <p>Score: {{ $game->score }}</p>
             <p>Result: {{ $game->result }}</p>
-
-            @if ($game->win_amount > 0)
-                <p>Win Amount: {{ $game->win_amount }}</p>
-            @endif
+            <p>Win Amount: {{ $game->win_amount }}</p>
         </div>
     @endisset
 </div>

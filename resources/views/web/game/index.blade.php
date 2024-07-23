@@ -25,7 +25,7 @@
             border-radius: 15px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
             padding: 20px;
-            width: 500px;
+            width: 600px;
             margin-bottom: 20px;
             font-size: 25px;
         }
@@ -37,9 +37,7 @@
         <p>
             Result: {{ $game->result }}.
             Score: {{ $game->score }}.
-            @if ($game->win_amount > 0)
-                Win amount: {{ $game->win_amount }}
-            @endif
+            Win amount: {{ $game->win_amount }}
         </p>
     @endforeach
     <a href="{{ route('link.show', ['hash' => $link->hash]) }}">Go Back</a>
