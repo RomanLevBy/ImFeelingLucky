@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
     <meta charset="UTF-8"/>
     <meta
         name="viewport"
@@ -66,8 +67,18 @@
 
 <body>
 <div class="main">
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
     <h2>Registration Form</h2>
-    <form action="/users/register">
+    <form action="{{ route('user.create') }}" method="POST">
         <label for="username"
         >Username:</label
         >
@@ -75,8 +86,12 @@
             type="text"
             id="username"
             name="username"
+            class="@error('username')is-invalid @enderror"
             required
         />
+        @error('username')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
 
         <label for="phone"
         >Phone:</label
@@ -85,8 +100,14 @@
             type="text"
             id="phone"
             name="phone"
+            class="@error('phone')is-invalid @enderror"
             required
         />
+        @error('phone')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+
+        @csrf <!-- {{ csrf_field() }} -->
 
         <button type="submit">
             Submit
