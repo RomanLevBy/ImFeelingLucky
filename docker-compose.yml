@@ -22,9 +22,12 @@ services:
         networks:
             - sail
         depends_on:
-            - mysql
-            - redis
-            - selenium
+            mysql:
+                condition: service_healthy
+            redis:
+                condition: service_started
+            selenium:
+                condition: service_started
     mysql:
         image: 'mysql/mysql-server:8.0'
         ports:
